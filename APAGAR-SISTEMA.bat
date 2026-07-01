@@ -3,6 +3,7 @@ echo ============================================
 echo    PUBLIART - Apagando Sistema
 echo ============================================
 echo.
+cd /d "C:\Users\Alex\Desktop\PUBLIART"
 echo Deteniendo procesos en segundo plano...
 call pm2 stop all
 echo Procesos detenidos.

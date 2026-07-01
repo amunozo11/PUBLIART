@@ -11,6 +11,8 @@ if %errorLevel% neq 0 (
     exit /b 1
 )
 
+cd /d "C:\Users\Alex\Desktop\PUBLIART"
+
 echo Iniciando MongoDB...
 net start MongoDB >nul 2>&1
 if %errorLevel% neq 0 (
