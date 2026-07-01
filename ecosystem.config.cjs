@@ -3,14 +3,14 @@ module.exports = {
     {
       name: "publiart-backend",
       cwd: "./backend",
-      script: "npm",
+      script: "npm.cmd",
       args: "run dev",
       watch: false,
     },
     {
       name: "publiart-frontend",
       cwd: "./frontend",
-      script: "npm",
+      script: "npm.cmd",
       args: "run dev",
       watch: false,
     }

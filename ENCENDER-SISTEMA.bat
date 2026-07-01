@@ -3,10 +3,12 @@ echo ============================================
 echo    PUBLIART - Encendiendo Sistema Oculto
 echo ============================================
 echo.
+
 net session >nul 2>&1
 if %errorLevel% neq 0 (
-    echo Este script necesita ejecutarse como Administrador.
-    echo Haz clic derecho y selecciona "Ejecutar como administrador"
+    echo [ALERTA] PM2 necesita ejecutarse como Administrador.
+    echo Por favor cierra esta ventana, haz clic derecho en ENCENDER-SISTEMA.bat 
+    echo y selecciona "Ejecutar como administrador".
     pause
     exit /b 1
 )
