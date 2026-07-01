@@ -26,13 +26,13 @@ echo.
 echo ============================================
 echo    Iniciando PUBLIART Backend
 echo ============================================
-start "PUBLIART Backend" cmd /k "cd /d C:\Users\Alex\Desktop\PUBLIART\backend && npm run dev"
+start "PUBLIART Backend" /MIN cmd /k "cd /d C:\Users\Alex\Desktop\PUBLIART\backend && npm run dev"
 
 echo.
 echo ============================================
 echo    Iniciando PUBLIART Frontend
 echo ============================================
-start "PUBLIART Frontend" cmd /k "cd /d C:\Users\Alex\Desktop\PUBLIART\frontend && npm run dev"
+start "PUBLIART Frontend" /MIN cmd /k "cd /d C:\Users\Alex\Desktop\PUBLIART\frontend && npm run dev"
 
 echo.
 echo ============================================
