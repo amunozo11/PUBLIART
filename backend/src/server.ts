@@ -35,7 +35,7 @@ const httpServer = createServer(app);
 // Socket.io
 export const io = new SocketServer(httpServer, {
   cors: {
-    origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+    origin: true,
     methods: ['GET', 'POST'],
     credentials: true,
   },
@@ -44,7 +44,7 @@ export const io = new SocketServer(httpServer, {
 // Middleware
 app.use(helmet({ crossOriginEmbedderPolicy: false }));
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  origin: true,
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));

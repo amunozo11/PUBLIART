@@ -340,7 +340,7 @@ export default function ClienteDetalle() {
             <div className="relative group w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0 overflow-hidden border border-primary/20 cursor-pointer">
               {cliente.foto ? (
                 <img
-                  src={`${import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'}/uploads/clientes/${cliente.foto}`}
+                  src={`${import.meta.env.VITE_API_URL?.replace('/api', '') || `http://${window.location.hostname}:5000`}/uploads/clientes/${cliente.foto}`}
                   alt={cliente.nombre}
                   className="w-full h-full object-cover"
                 />

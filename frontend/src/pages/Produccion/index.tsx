@@ -111,7 +111,7 @@ const IMAGE_EXTS = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'];
 function VistaPreviewArchivo({ trabajo, onClose }: { trabajo: Trabajo; onClose: () => void }) {
   const ext = (trabajo.archivo.extension || trabajo.archivo.nombre.split('.').pop() || '').toLowerCase();
   const isImage = IMAGE_EXTS.includes(ext);
-  const apiBase = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+  const apiBase = import.meta.env.VITE_API_URL?.replace('/api', '') || `http://${window.location.hostname}:5000`;
   // La ruta guardada en el servidor es una ruta absoluta de Windows — solo mostramos imagen si es servida
   const rutaServida = trabajo.archivo.ruta?.replace(/\\/g, '/') || '';
 

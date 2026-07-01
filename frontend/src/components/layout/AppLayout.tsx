@@ -7,7 +7,7 @@ import { io as socketIO } from 'socket.io-client';
 import { useNotifStore } from '../../store/notif.store';
 import toast from 'react-hot-toast';
 
-const socket = socketIO(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000', {
+const socket = socketIO(import.meta.env.VITE_SOCKET_URL || `http://${window.location.hostname}:5000`, {
   autoConnect: false,
 });
 

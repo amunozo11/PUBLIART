@@ -28,7 +28,7 @@ export default function FacturaDetalle() {
     setGenerandoPDF(true);
     try {
       const token = useAuthStore.getState().accessToken;
-      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/facturas/${id}/pdf`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000/api`}/facturas/${id}/pdf`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       
