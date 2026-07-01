@@ -231,22 +231,10 @@ function EditObsModal({
       toast.success('Trabajo actualizado');
       onActualizado();
       onClose();
+    } catch (err) {
       console.error(err);
-      toast.error('Error al abrir archivo');
-    }
-  };
-
-  const handleDelete = async () => {
-    if (!window.confirm('¿Estás seguro de que quieres eliminar este trabajo? Esta acción no se puede deshacer.')) return;
-    try {
-      await api.delete(`/produccion/${trabajo._id}`);
-      toast.success('Trabajo eliminado');
-      onActualizado();
-      onClose();
-    } catch {
-      toast.error('Error al eliminar trabajo');
-    }
-  };finally {
+      toast.error('Error al guardar');
+    } finally {
       setSaving(false);
     }
   };
@@ -357,6 +345,18 @@ export default function TrabajoDetalle() {
       toast.error('Error al cambiar estado');
     } finally {
       setCambiandoEstado(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!trabajo) return;
+    if (!window.confirm('¿Estás seguro de que quieres eliminar este trabajo? Esta acción no se puede deshacer.')) return;
+    try {
+      await api.delete(`/produccion/${trabajo._id}`);
+      toast.success('Trabajo eliminado');
+      navigate('/produccion');
+    } catch {
+      toast.error('Error al eliminar trabajo');
     }
   };
 
