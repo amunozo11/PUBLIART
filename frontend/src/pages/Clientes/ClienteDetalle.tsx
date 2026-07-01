@@ -232,7 +232,7 @@ export default function ClienteDetalle() {
         open: true, trabajoId,
         whatsapp: wa,
         clienteNombre: cliente.nombre,
-        archivoNombre: trabajo?.descripcion || trabajo?.archivo.nombre || '',
+        archivoNombre: trabajo?.descripcion || trabajo?.archivo?.nombre || '',
         estadoNuevo: nuevoEstado,
       });
     }

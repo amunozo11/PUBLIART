@@ -109,11 +109,11 @@ function MenuContextualArchivo({
 const IMAGE_EXTS = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'];
 
 function VistaPreviewArchivo({ trabajo, onClose }: { trabajo: Trabajo; onClose: () => void }) {
-  const ext = (trabajo.archivo.extension || trabajo.archivo.nombre.split('.').pop() || '').toLowerCase();
+  const ext = (trabajo.archivo?.extension || trabajo.archivo?.nombre.split('.').pop() || '').toLowerCase();
   const isImage = IMAGE_EXTS.includes(ext);
   const apiBase = import.meta.env.VITE_API_URL?.replace('/api', '') || `http://${window.location.hostname}:5000`;
   // La ruta guardada en el servidor es una ruta absoluta de Windows — solo mostramos imagen si es servida
-  const rutaServida = trabajo.archivo.ruta?.replace(/\\/g, '/') || '';
+  const rutaServida = trabajo.archivo?.ruta?.replace(/\\/g, '/') || '';
 
   return (
     <div className="fixed inset-0 z-[998] flex items-center justify-center p-4">
@@ -128,9 +128,9 @@ function VistaPreviewArchivo({ trabajo, onClose }: { trabajo: Trabajo; onClose: 
       >
         <div className="flex items-center justify-between p-4 border-b border-border">
           <div>
-            <p className="font-semibold text-text text-sm font-mono">{trabajo.archivo.nombre}</p>
-            {trabajo.archivo.ruta && (
-              <p className="text-xs text-text-dim mt-0.5 truncate max-w-lg">{trabajo.archivo.ruta}</p>
+            <p className="font-semibold text-text text-sm font-mono">{trabajo.archivo?.nombre}</p>
+            {trabajo.archivo?.ruta && (
+              <p className="text-xs text-text-dim mt-0.5 truncate max-w-lg">{trabajo.archivo?.ruta}</p>
             )}
           </div>
           <button onClick={onClose} className="text-text-dim hover:text-text">
@@ -140,8 +140,8 @@ function VistaPreviewArchivo({ trabajo, onClose }: { trabajo: Trabajo; onClose: 
         <div className="p-6 flex flex-col items-center gap-4">
           {isImage && rutaServida ? (
             <img
-              src={`${apiBase}/uploads/produccion/${encodeURIComponent(trabajo.archivo.nombre)}`}
-              alt={trabajo.archivo.nombre}
+              src={`${apiBase}/uploads/produccion/${encodeURIComponent(trabajo.archivo?.nombre)}`}
+              alt={trabajo.archivo?.nombre}
               className="max-h-[60vh] max-w-full rounded-xl object-contain shadow-lg"
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
             />
@@ -152,9 +152,9 @@ function VistaPreviewArchivo({ trabajo, onClose }: { trabajo: Trabajo; onClose: 
               <p className="text-xs text-text-dim">Solo se muestran imágenes PNG/JPG/SVG/GIF</p>
             </div>
           )}
-          {trabajo.archivo.ruta && (
+          {trabajo.archivo?.ruta && (
             <div className="w-full bg-surface-3 rounded-lg p-3">
-              <p className="text-xs text-text-dim font-mono break-all">{trabajo.archivo.ruta}</p>
+              <p className="text-xs text-text-dim font-mono break-all">{trabajo.archivo?.ruta}</p>
             </div>
           )}
         </div>
@@ -266,7 +266,7 @@ export default function Produccion() {
         const q = filtros.search.toLowerCase();
         lista = lista.filter(
           (t) =>
-            t.archivo.nombre.toLowerCase().includes(q) ||
+            t.archivo?.nombre.toLowerCase().includes(q) ||
             t.cliente?.nombre?.toLowerCase().includes(q) ||
             t.descripcion?.toLowerCase().includes(q)
         );
@@ -287,7 +287,7 @@ export default function Produccion() {
         trabajoId: trabajo._id,
         whatsapp: wa,
         clienteNombre: trabajo.cliente?.nombre || '',
-        archivoNombre: trabajo.descripcion || trabajo.archivo.nombre,
+        archivoNombre: trabajo.descripcion || trabajo.archivo?.nombre,
         estadoNuevo: nuevoEstado,
       });
     }
@@ -430,10 +430,10 @@ export default function Produccion() {
                         )}
                         <div className="flex-1 min-w-0">
                           <p className="font-medium text-xs font-mono leading-tight truncate max-w-[180px]">
-                            {t.descripcion || t.archivo.nombre}
+                            {t.descripcion || t.archivo?.nombre}
                           </p>
                           {t.descripcion && (
-                            <p className="text-[10px] text-text-dim font-mono truncate max-w-[180px]">{t.archivo.nombre}</p>
+                            <p className="text-[10px] text-text-dim font-mono truncate max-w-[180px]">{t.archivo?.nombre}</p>
                           )}
                           {t.valorFormula && (
                             <p className="text-[9px] text-text-dim/60 font-mono mt-0.5">{t.valorFormula}</p>
@@ -516,7 +516,7 @@ export default function Produccion() {
                         <button
                           onClick={() => {
                             const nombre = t.cliente?.nombre || '';
-                            const archivo = t.descripcion || t.archivo.nombre;
+                            const archivo = t.descripcion || t.archivo?.nombre;
                             const numero = t.cliente?.telefono?.replace(/[\s\-().+]/g, '') || '';
                             const prefixed = numero.length === 10 ? `57${numero}` : numero;
                             const msg = `Hola ${nombre}, ¡te tenemos una buena noticia! 🎨\nTu trabajo *"${archivo}"* ya está listo para retirar en Publiart.\nPor favor avísanos cuándo puedes pasar. ¡Gracias! 😊`;

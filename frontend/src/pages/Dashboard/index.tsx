@@ -324,7 +324,7 @@ export default function Dashboard() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-text truncate">
-                      {t.descripcion || t.archivo.nombre}
+                      {t.descripcion || t.archivo?.nombre}
                     </p>
                     <p className="text-xs text-text-muted truncate">
                       {t.cliente?.nombre || '—'} · {MAQUINA_LABEL[t.maquina] || t.maquina}
@@ -382,7 +382,7 @@ export default function Dashboard() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-text truncate">
-                      {t.descripcion || t.archivo.nombre}
+                      {t.descripcion || t.archivo?.nombre}
                     </p>
                     <p className="text-xs text-text-muted truncate">
                       {t.cliente?.nombre || 'Sin cliente'}

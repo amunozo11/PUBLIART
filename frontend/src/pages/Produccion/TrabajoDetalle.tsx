@@ -128,7 +128,7 @@ function CobroModal({
           </div>
           <div className="flex-1">
             <h3 className="font-bold text-text">Registrar Cobro</h3>
-            <p className="text-xs text-text-muted truncate">{trabajo.descripcion || trabajo.archivo.nombre}</p>
+            <p className="text-xs text-text-muted truncate">{trabajo.descripcion || trabajo.archivo?.nombre}</p>
           </div>
           <button onClick={onClose} className="text-text-dim hover:text-text"><X className="w-5 h-5" /></button>
         </div>
@@ -384,7 +384,7 @@ export default function TrabajoDetalle() {
     ? (() => {
         const num = trabajo.cliente.telefono.replace(/[\s\-().+]/g, '');
         const prefixed = num.length === 10 ? `57${num}` : num;
-        const archivo = trabajo.descripcion || trabajo.archivo.nombre;
+        const archivo = trabajo.descripcion || trabajo.archivo?.nombre;
         const msg = `Hola ${trabajo.cliente.nombre}, tu trabajo *"${archivo}"* ya está listo para retirar en Publiart. ¡Avísanos cuándo puedes pasar! 🎨`;
         return `https://wa.me/${prefixed}?text=${encodeURIComponent(msg)}`;
       })()
@@ -398,7 +398,7 @@ export default function TrabajoDetalle() {
           <ArrowLeft className="w-4 h-4" /> Producción
         </button>
         <span className="text-text-dim">/</span>
-        <span className="text-text font-medium truncate">{trabajo.descripcion || trabajo.archivo.nombre}</span>
+        <span className="text-text font-medium truncate">{trabajo.descripcion || trabajo.archivo?.nombre}</span>
       </div>
 
       {/* ── Header principal ── */}
@@ -414,10 +414,10 @@ export default function TrabajoDetalle() {
             <div className="flex items-start gap-3 flex-wrap">
               <div className="flex-1 min-w-0">
                 <h2 className="text-xl font-bold text-text truncate">
-                  {trabajo.descripcion || trabajo.archivo.nombre}
+                  {trabajo.descripcion || trabajo.archivo?.nombre}
                 </h2>
                 {trabajo.descripcion && (
-                  <p className="text-sm font-mono text-text-dim mt-0.5 truncate">{trabajo.archivo.nombre}</p>
+                  <p className="text-sm font-mono text-text-dim mt-0.5 truncate">{trabajo.archivo?.nombre}</p>
                 )}
                 <div className="flex items-center gap-3 mt-2 flex-wrap">
                   {/* Prioridad */}
@@ -592,7 +592,7 @@ export default function TrabajoDetalle() {
             {trabajo.tiempoInicio && <DataRow icon={Zap} label="Inicio producción" value={formatDateTime(trabajo.tiempoInicio)} />}
             {trabajo.tiempoFin && <DataRow icon={CheckCircle2} label="Finalizado" value={formatDateTime(trabajo.tiempoFin)} />}
             {trabajo.creadoPor && <DataRow icon={User} label="Creado por" value={trabajo.creadoPor.nombre} />}
-            {trabajo.archivo.carpetaOrigen && <DataRow icon={FileText} label="Carpeta origen" value={trabajo.archivo.carpetaOrigen} mono />}
+            {trabajo.archivo?.carpetaOrigen && <DataRow icon={FileText} label="Carpeta origen" value={trabajo.archivo?.carpetaOrigen} mono />}
             {trabajo.observaciones && (
               <div className="pt-2 border-t border-border">
                 <p className="text-[10px] text-text-dim uppercase tracking-wider mb-1">Observaciones</p>
@@ -794,7 +794,7 @@ export default function TrabajoDetalle() {
         trabajoId={trabajo._id}
         whatsapp={waModal.whatsapp}
         clienteNombre={trabajo.cliente?.nombre || ''}
-        archivoNombre={trabajo.descripcion || trabajo.archivo.nombre}
+        archivoNombre={trabajo.descripcion || trabajo.archivo?.nombre}
         estadoNuevo={waModal.estadoNuevo}
         onAvisado={() => setTrabajo(p => p ? { ...p, whatsappEnviado: true } : p)}
       />
