@@ -49,8 +49,8 @@ export interface ITrabajoProduccion extends Document {
 const TrabajoSchema = new Schema<ITrabajoProduccion>(
   {
     archivo: {
-      nombre: { type: String, required: true },
-      nombreOriginal: { type: String, required: true },
+      nombre: { type: String },
+      nombreOriginal: { type: String },
       ruta: { type: String },
       extension: { type: String },
       carpetaOrigen: { type: String },
