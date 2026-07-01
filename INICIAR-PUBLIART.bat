@@ -1,28 +1,5 @@
 @echo off
-echo ============================================
-echo    PUBLIART - Iniciando MongoDB
-echo ============================================
-echo.
-net session >nul 2>&1
-if %errorLevel% neq 0 (
-    echo Este script necesita ejecutarse como Administrador.
-    echo Haz clic derecho y selecciona "Ejecutar como administrador"
-    pause
-    exit /b 1
-)
 
-echo Iniciando servicio MongoDB...
-net start MongoDB
-if %errorLevel% equ 0 (
-    echo MongoDB iniciado correctamente!
-) else (
-    echo Intentando inicio directo...
-    start "" "C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe" --config "C:\Program Files\MongoDB\Server\8.0\bin\mongod.cfg"
-    timeout /t 3 /nobreak >nul
-    echo MongoDB lanzado!
-)
-
-echo.
 echo ============================================
 echo    Iniciando PUBLIART Backend
 echo ============================================
@@ -38,8 +15,9 @@ echo.
 echo ============================================
 echo   SISTEMA PUBLIART INICIADO
 echo ============================================
-echo Backend:  http://localhost:5000
-echo Frontend: http://localhost:5173
+echo Base de Datos: MongoDB Atlas (Nube)
+echo Backend:       http://localhost:5000
+echo Frontend:      http://localhost:5173
 echo.
 echo Para abrir desde OTROS PCs en la misma red:
 echo 1. Abre otra consola y escribe: ipconfig
