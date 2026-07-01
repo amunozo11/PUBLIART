@@ -374,8 +374,6 @@ export default function TrabajoDetalle() {
 
   const cfg = ESTADO_CONFIG[trabajo.estado] || ESTADO_CONFIG.pendiente;
   const Icon = cfg.icon;
-  const prioridadCfg = PRIORIDAD_CONFIG[trabajo.trabajo?.prioridad || trabajo.prioridad] || PRIORIDAD_CONFIG.media;
-  const pendienteCobro = trabajo.valor - (trabajo.valorCobrado || 0);
 
   // Calcular tiempo en producción
   const tiempoProduccion = trabajo.tiempoInicio && trabajo.tiempoFin
@@ -754,7 +752,7 @@ export default function TrabajoDetalle() {
                       <HIcon className="w-3 h-3" style={{ color: hCfg.color }} />
                     </div>
                     <div className="flex-1 pb-4">
-                      <p className="text-xs font-semibold" style={{ color: hCfg.color }}>{hCfg.label || h.estado}</p>
+                      <p className="text-xs font-semibold" style={{ color: hCfg.color }}>{(hCfg as any).label || h.estado}</p>
                       <p className="text-[10px] text-text-dim mt-0.5">
                         {new Date(h.fecha).toLocaleString('es-CO', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}
                       </p>
