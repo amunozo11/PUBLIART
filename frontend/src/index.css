@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-dark text-text font-sans antialiased;
+    background: #0A0A0B;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border-light rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-600;
+  }
+}
+
+@layer components {
+  /* Cards */
+  .card {
+    @apply bg-surface-2 border border-border rounded-xl p-6 shadow-card transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply border-border-light shadow-card-hover;
+  }
+
+  .card-glass {
+    @apply bg-surface-2/70 backdrop-blur-md border border-border rounded-xl p-6;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 cursor-pointer border-0 outline-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-dark hover:bg-primary-400 active:scale-95 shadow-glow hover:shadow-glow-lg;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-text-muted hover:bg-surface-3 hover:text-text;
+  }
+
+  .btn-outline {
+    @apply btn bg-transparent border border-border text-text-muted hover:border-primary hover:text-primary;
+  }
+
+  .btn-danger {
+    @apply btn bg-error/10 text-error hover:bg-error hover:text-white;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full bg-surface-3 border border-border rounded-lg px-4 py-2.5 text-sm text-text placeholder-text-dim focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all duration-200;
+  }
+
+  .label {
+    @apply block text-xs font-medium text-text-muted mb-1.5 uppercase tracking-wider;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-success { @apply badge bg-success/15 text-success; }
+  .badge-warning { @apply badge bg-warning/15 text-warning; }
+  .badge-error { @apply badge bg-error/15 text-error; }
+  .badge-info { @apply badge bg-info/15 text-info; }
+  .badge-primary { @apply badge bg-primary/15 text-primary; }
+  .badge-muted { @apply badge bg-surface-4 text-text-muted; }
+
+  /* Table */
+  .table-wrapper {
+    @apply w-full overflow-x-auto rounded-xl border border-border;
+  }
+
+  .table {
+    @apply w-full text-sm text-left;
+  }
+
+  .table thead {
+    @apply bg-surface-3 text-text-muted text-xs uppercase tracking-wider;
+  }
+
+  .table th {
+    @apply px-4 py-3 font-medium;
+  }
+
+  .table td {
+    @apply px-4 py-3 border-t border-border text-text;
+  }
+
+  .table tbody tr {
+    @apply hover:bg-surface-3/50 transition-colors duration-150;
+  }
+
+  /* Sidebar */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-text-muted font-medium transition-all duration-200 cursor-pointer;
+  }
+
+  .sidebar-link:hover {
+    @apply bg-surface-3 text-text;
+  }
+
+  .sidebar-link.active {
+    @apply bg-primary/15 text-primary border-l-2 border-primary;
+  }
+
+  /* Stats card */
+  .stat-card {
+    @apply card relative overflow-hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-transparent;
+  }
+
+  /* Kanban */
+  .kanban-col {
+    @apply bg-surface-2 rounded-xl border border-border min-w-[260px] w-[260px] flex flex-col;
+  }
+
+  .kanban-card {
+    @apply bg-surface-3 rounded-xl border border-border p-4 cursor-grab active:cursor-grabbing transition-all duration-200;
+  }
+
+  .kanban-card:hover {
+    @apply border-primary/50 shadow-glow;
+  }
+
+  /* Page */
+  .page-header {
+    @apply flex items-center justify-between mb-6;
+  }
+
+  .page-title {
+    @apply text-2xl font-bold text-text;
+  }
+
+  .page-subtitle {
+    @apply text-sm text-text-muted mt-0.5;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-primary-300 bg-clip-text text-transparent;
+  }
+
+  .bg-mesh {
+    background-image:
+      radial-gradient(circle at 25px 25px, rgba(245, 196, 0, 0.03) 2%, transparent 0%),
+      radial-gradient(circle at 75px 75px, rgba(245, 196, 0, 0.02) 2%, transparent 0%);
+    background-size: 100px 100px;
+  }
+
+  .shimmer-effect {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    background-size: 200%;
+    @apply animate-shimmer;
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
